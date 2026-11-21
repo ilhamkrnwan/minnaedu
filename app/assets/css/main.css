@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Mulish', system-ui, -apple-system, sans-serif;
+  --font-script: 'Caveat Brush', 'Segoe Print', cursive;
+
+  /* Warm paper surfaces: cream canvas, one step lighter surface, one step darker paper strip */
+  --color-canvas: #fbf5e8;
+  --color-surface: #fffdf7;
+  --color-paper: #f0e6d0;
+  --color-line: #e6dbc4;
+  --color-ink: #2a1c15;
+  --color-ink-muted: #67564b;
+
+  /* Dark section: deep leaf green, from the logo's leaf */
+  --color-orbital: #1f3b2a;
+  --color-orbital-muted: #d6e8c8;
+
+  /* Warm brown-ink scale (drives Nuxt UI primary) */
+  --color-minna-ink-50: #f8f4ee;
+  --color-minna-ink-100: #efe7dc;
+  --color-minna-ink-200: #ddd0be;
+  --color-minna-ink-300: #bfae98;
+  --color-minna-ink-400: #9a8671;
+  --color-minna-ink-500: #77634f;
+  --color-minna-ink-600: #5b4a3b;
+  --color-minna-ink-700: #43352a;
+  --color-minna-ink-800: #33261d;
+  --color-minna-ink-900: #2a1c15;
+  --color-minna-ink-950: #1a110c;
+
+  /* Minna Leaf Green (logo leaf, calibrated for AA) */
+  --color-minna-green-50: #f3f9eb;
+  --color-minna-green-100: #e2f2cd;
+  --color-minna-green-200: #c5e59f;
+  --color-minna-green-300: #a0d268;
+  --color-minna-green-400: #7cb342;
+  --color-minna-green-500: #5d9425;
+  --color-minna-green-600: #3d6d16;
+  --color-minna-green-700: #2f5514;
+  --color-minna-green-800: #264414;
+  --color-minna-green-900: #1f3713;
+  --color-minna-green-950: #0f1e08;
+
+  /* Minna Hibiscus Rose (logo flower, calibrated for AA) */
+  --color-minna-rose-50: #fef2f7;
+  --color-minna-rose-100: #fde5f0;
+  --color-minna-rose-200: #f9c6dc;
+  --color-minna-rose-300: #f59ac3;
+  --color-minna-rose-400: #ee62a3;
+  --color-minna-rose-500: #df3784;
+  --color-minna-rose-600: #be185d;
+  --color-minna-rose-700: #9d174d;
+  --color-minna-rose-800: #831843;
+  --color-minna-rose-900: #6f173c;
+  --color-minna-rose-950: #430820;
+
+  /* The one hot accent: marker coral. Large type and graphics only, never small text. */
+  --color-minna-coral-400: #ff6a4d;
+  --color-minna-coral-500: #f4452d;
+  --color-minna-coral-600: #d93a1f;
+
+  /* Photo backdrops baked into the portraits */
+  --color-studio-pink: #edb3c2;
+  --color-studio-gold: #f6c768;
+  --color-studio-amber: #f2c560;
+  --color-minna-sun-100: #fff4cc;
+  --color-minna-sun-300: #ffd24c;
+  --color-minna-sun-400: #ffa93a;
+}
+
+:root {
+  --ui-bg: var(--color-canvas);
+  --ui-bg-muted: var(--color-paper);
+  --ui-bg-elevated: var(--color-surface);
+  --ui-bg-accented: #e8dcc2;
+  --ui-border: var(--color-line);
+  --ui-border-muted: #efe6d2;
+  --ui-text: #3a2a21;
+  --ui-text-highlighted: var(--color-ink);
+  --ui-text-muted: var(--color-ink-muted);
+  --ui-text-toned: #54443a;
+  --ui-primary: var(--color-ink);
+  --ui-secondary: var(--color-minna-green-600);
+  --ui-radius: 0.5rem;
+  --ui-header-height: 4.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
+  overflow-x: clip;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p, dd, blockquote {
+    text-wrap: pretty;
+  }
+}
+
+::selection {
+  background-color: var(--color-minna-coral-400);
+  color: var(--color-minna-ink-950);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+/* Light ring on dark surfaces (3:1 minimum against the green/ink grounds) */
+.on-dark :focus-visible {
+  outline-color: var(--color-minna-sun-300);
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.font-script {
+  font-family: var(--font-script);
+  letter-spacing: 0;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hand-cut paper edge: the wobble filter (defined once in layouts/default.vue) is applied to the
+   backdrop layer only, so the content on top stays crisp. */
+.paper-cut {
+  filter: url(#paper-wobble);
+}
+
+/* Finite attention ring for the floating WhatsApp button */
+@keyframes fab-ring {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+.fab-ring {
+  animation: fab-ring 1.6s cubic-bezier(0.22, 1, 0.36, 1) 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fab-ring {
+    animation: none;
+  }
+}
