@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".scratch/theme-01-warm-paper/index.html"
+        ],
+        "createdAt": "2026-11-22T12:32:46.591Z",
+        "reason": "Codex: rendered checks at 390 and 1440 px confirm 15 px before step text, 22 px before the first mobile quote, 22 px inside the mobile contact panel, and at least 20 px gutters on full-width bands. The source scan misses logical padding, clamp and nested gutters."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          ".scratch/theme-01-warm-paper/index.html"
+        ],
+        "createdAt": "2026-11-22T12:32:46.787Z",
+        "reason": "Codex: the warm off-white paper tone is intentional for the Minna storybook and matches the paper fill in the generated illustrations."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".scratch/theme-02-modern-islamic/index.html"
+        ],
+        "createdAt": "2026-11-24T02:35:44.536Z",
+        "reason": "Agent: Chromium measured 20px horizontal inset and at least 44px vertical inset on reported sections at 390px; layout insets come from .wrap and padding-block."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".scratch/theme-04-editorial-bold/index.html"
+        ],
+        "createdAt": "2026-11-24T02:35:44.625Z",
+        "reason": "Agent: Chromium measured 20px horizontal inset and at least 44px vertical inset on reported sections at 390px; layout insets come from .wrap and padding-block."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          ".scratch/theme-04-editorial-bold/index.html"
+        ],
+        "createdAt": "2026-11-24T02:35:44.707Z",
+        "reason": "Agent: the original Editorial Bold design pairs a warm paper surface with near-black ink and red accents to evoke a printed education magazine."
+      }
+    ]
+  }
+}
