@@ -11,7 +11,6 @@ useSeoMeta({
 })
 
 const root = useReveal()
-const whatsappLink = MINNA_CONTACT.whatsappUrl()
 
 const VALUES = [
   { icon: 'i-lucide-users-round', title: 'Kelompok kecil', detail: 'Tiap anak dikenali dan didampingi.' },
@@ -137,9 +136,18 @@ useJsonLd({
 
     <section class="section wrap" aria-labelledby="judul-pengajar">
       <h2 id="judul-pengajar" class="tentang-h2">Kenali<br>pengajarnya.</h2>
+      <p class="teacher-caption">Potret ilustratif.</p>
       <ul class="teacher-grid" data-reveal>
         <li v-for="teacher in TEACHERS" :key="teacher.name" class="teacher-card">
-          <span class="teacher-tile" aria-hidden="true">{{ teacher.initials }}</span>
+          <img
+            class="teacher-tile"
+            :src="teacher.portrait"
+            alt=""
+            width="480"
+            height="480"
+            loading="lazy"
+            decoding="async"
+          >
           <span class="teacher-card-name">{{ teacher.name }}</span>
           <span class="teacher-card-role">{{ teacher.role }}</span>
         </li>
@@ -150,19 +158,8 @@ useJsonLd({
       <template #title>Sering<br>ditanyakan</template>
     </HomeFaq>
 
-    <section class="contact wrap" aria-labelledby="judul-ajak">
-      <div class="cta cta-solo">
-        <div class="cta-copy" data-reveal>
-          <h2 id="judul-ajak">Mampir ke<br>rumah belajar.</h2>
-          <p>{{ MINNA_CONTACT.scheduleSummary }}. Boleh berkunjung dulu sebelum mendaftar.</p>
-          <div class="cta-actions">
-            <a class="button cta-primary" :href="whatsappLink" target="_blank" rel="noopener noreferrer">
-              Chat WhatsApp <ArrowUpRight />
-            </a>
-            <NuxtLink class="button cta-secondary" to="/kontak">Lihat lokasi</NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContactCta heading-id="judul-ajak">
+      <template #title>Mampir ke<br>rumah belajar.</template>
+    </ContactCta>
   </div>
 </template>

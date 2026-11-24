@@ -11,8 +11,9 @@ export function useMotion() {
     gsap.registerPlugin(ScrollTrigger, SplitText)
     const $$ = <T extends HTMLElement>(sel: string) => gsap.utils.toArray<T>(sel, root)
 
-    mm = gsap.matchMedia()
-    mm.add(
+    const context = gsap.matchMedia()
+    mm = context
+    context.add(
       { full: '(prefers-reduced-motion: no-preference)', narrow: '(max-width: 680px)' },
       (ctx) => {
         const { full, narrow } = ctx.conditions as { full: boolean, narrow: boolean }
@@ -94,14 +95,7 @@ export function useMotion() {
           const layers = scene.querySelectorAll<HTMLElement>('[data-depth]')
           if (!layers.length) return
 
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: scene,
-              start: 'top 85%',
-              once: true
-            },
-            defaults: { ease: 'expo.out' }
-          })
+          const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } })
 
           layers.forEach((layer, idx) => {
             const isBack = idx === 0
@@ -153,6 +147,14 @@ export function useMotion() {
               idx * 0.18
             )
           })
+
+          // A standalone trigger avoids a deferred timeline refresh during parallax setup.
+          ScrollTrigger.create({
+            trigger: scene,
+            start: 'top 85%',
+            once: true,
+            onEnter: () => { tl.play() }
+          })
         })
 
         // Parallax: each layer drifts by its data-depth (px) across the scene's pass through the viewport.
@@ -180,11 +182,15 @@ export function useMotion() {
     )
 
     // Fonts/lazy images shift layout; re-measure triggers.
-    document.fonts?.ready.then(() => ScrollTrigger.refresh())
+    document.fonts?.ready.then(() => {
+      if (mm === context) ScrollTrigger.refresh()
+    })
   }
 
   function cleanup() {
-    mm?.revert()
+    const context = mm
+    mm = undefined
+    context?.revert()
   }
 
   return { init, cleanup }

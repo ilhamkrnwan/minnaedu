@@ -18,8 +18,9 @@ export function useReveal() {
     gsap.registerPlugin(ScrollTrigger, SplitText)
     const $$ = (sel: string) => gsap.utils.toArray<HTMLElement>(sel, el)
 
-    mm = gsap.matchMedia()
-    mm.add({ full: '(prefers-reduced-motion: no-preference)' }, (ctx) => {
+    const context = gsap.matchMedia()
+    mm = context
+    context.add({ full: '(prefers-reduced-motion: no-preference)' }, (ctx) => {
       const { full } = ctx.conditions as { full: boolean }
 
       const items = $$('[data-reveal]').flatMap(group => group.children.length ? [...group.children] as HTMLElement[] : [group])
@@ -77,10 +78,16 @@ export function useReveal() {
     }, el)
 
     // Fonts and lazy images shift layout; re-measure triggers.
-    document.fonts?.ready.then(() => ScrollTrigger.refresh())
+    document.fonts?.ready.then(() => {
+      if (mm === context) ScrollTrigger.refresh()
+    })
   })
 
-  onUnmounted(() => mm?.revert())
+  onBeforeUnmount(() => {
+    const context = mm
+    mm = undefined
+    context?.revert()
+  })
 
   return root
 }

@@ -70,7 +70,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   color: var(--ink);
   background: var(--paper);
   font-family: "DM Sans", system-ui, sans-serif;
@@ -687,6 +686,7 @@ section[id] { scroll-margin-top: 1.5rem; }
   gap: clamp(1.5rem, 5vw, 5rem);
 }
 .teacher .topics { margin-top: 1rem; }
+.teacher-caption { margin-top: 0.5rem; color: var(--muted); font-size: 0.875rem; }
 
 .teacher-grid {
   display: grid;
@@ -697,6 +697,7 @@ section[id] { scroll-margin-top: 1.5rem; }
   padding: 0;
   list-style: none;
 }
+.teacher-caption + .teacher-grid { margin-top: 1rem; }
 
 .teacher-card {
   display: grid;
@@ -712,18 +713,14 @@ section[id] { scroll-margin-top: 1.5rem; }
 .teacher-card:nth-child(4) { background: var(--rose-pale); }
 
 .teacher-tile {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1;
   margin-bottom: 0.85rem;
   border: 2px solid var(--ink);
   border-radius: 25% 20% 24% 20% / 18% 22% 18% 23%;
   background: var(--paper);
-  font-size: clamp(2.6rem, 5vw, 4.25rem);
-  font-weight: 800;
-  letter-spacing: -0.08em;
-  line-height: 1;
   rotate: -4deg;
 }
 .teacher-card:nth-child(even) .teacher-tile { rotate: 4deg; }
@@ -979,7 +976,6 @@ section[id] { scroll-margin-top: 1.5rem; }
 /* FAQ band keeps its full padding (overrides the tighter stacking above) */
 .tentang .faq.section { padding-top: clamp(3.6rem, 7.2vw, 7rem); }
 
-.cta-solo { grid-template-columns: 1fr; }
 
 @media (max-width: 760px) {
   .tentang-cards, .nilai-notes { grid-template-columns: 1fr; }
@@ -1402,6 +1398,5 @@ section[id] { scroll-margin-top: 1.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   .button { transition: none; }
 }

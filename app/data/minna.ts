@@ -50,10 +50,10 @@ export const LEAD_EDUCATOR = {
 
 // Empat guru utama. Isi `role` tiap guru bila bidangnya sudah dikonfirmasi.
 export const TEACHERS = [
-  { name: 'Sudarmini, S.E.', initials: 'Su', role: 'Pimpinan & Pengajar Utama' },
-  { name: 'Ana', initials: 'An', role: 'Pengajar' },
-  { name: 'Ratna', initials: 'Ra', role: 'Pengajar' },
-  { name: 'Fara', initials: 'Fa', role: 'Pengajar' }
+  { name: 'Sudarmini, S.E.', role: 'Pimpinan & Pengajar Utama', portrait: '/images/pengajar/sudarmini.webp' },
+  { name: 'Ana', role: 'Pengajar', portrait: '/images/pengajar/ana.webp' },
+  { name: 'Ratna', role: 'Pengajar', portrait: '/images/pengajar/ratna.webp' },
+  { name: 'Fara', role: 'Pengajar', portrait: '/images/pengajar/fara.webp' }
 ] as const
 
 // Perjalanan Minna, dari awal sampai sekarang. Tambahkan `year` bila tahunnya sudah pasti.

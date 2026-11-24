@@ -8,7 +8,7 @@ onMounted(() => {
   nextTick(() => root.value && init(root.value))
 })
 
-onUnmounted(cleanup)
+onBeforeUnmount(cleanup)
 
 // Same Q&A as the FAQ section, for search and answer engines.
 useJsonLd({
@@ -33,6 +33,8 @@ useJsonLd({
     <HomeEnrollment />
     <HomeKabar />
     <HomeFaq />
-    <HomeContact />
+    <ContactCta id="kontak" heading-id="judul-kontak">
+      <template #title>Yuk, kenalan<br>dengan Minna.</template>
+    </ContactCta>
   </div>
 </template>
