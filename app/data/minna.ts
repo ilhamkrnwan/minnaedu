@@ -15,6 +15,21 @@ export const MINNA_CONTACT = {
   scheduleSummary: 'Senin – Sabtu · 14.30 – 16.00 WIB'
 } as const
 
+export interface Video {
+  youtubeId?: string // id dari youtube.com/watch?v=<id>; kosong = placeholder (belum bisa diputar)
+  poster: string // dipakai selama belum ada youtubeId
+  title: string
+  meta: string
+}
+
+// PLACEHOLDER: isi youtubeId dan meta begitu video Minna sudah diunggah ke YouTube.
+export const VIDEOS: Video[] = [
+  { poster: '/images/minna.jpg', title: 'Profil rumah belajar Minna Education', meta: 'Minna Education' },
+  { poster: '/images/hero-calistung.jpg', title: 'Belajar calistung kelas PAUD / TK', meta: 'Minna Education' },
+  { poster: '/images/gallery-ngaji.jpg', title: 'Mengaji dan Tahfidz sore hari', meta: 'Minna Education' },
+  { poster: '/images/gallery-kegiatan.jpg', title: 'Kegiatan bersama siswa Minna', meta: 'Minna Education' }
+]
+
 export const CAMPUS_FACTS = [
   { label: 'Jadwal', value: 'Senin – Sabtu, 14.30 – 16.00 WIB' },
   { label: 'Kelas', value: 'Kelompok kecil & pendampingan personal' },
@@ -32,6 +47,22 @@ export const LEAD_EDUCATOR = {
     'Tim pendidik lulusan perguruan tinggi & pesantren'
   ]
 } as const
+
+// Empat guru utama. Isi `role` tiap guru bila bidangnya sudah dikonfirmasi.
+export const TEACHERS = [
+  { name: 'Sudarmini, S.E.', initials: 'Su', role: 'Pimpinan & Pengajar Utama' },
+  { name: 'Ana', initials: 'An', role: 'Pengajar' },
+  { name: 'Ratna', initials: 'Ra', role: 'Pengajar' },
+  { name: 'Fara', initials: 'Fa', role: 'Pengajar' }
+] as const
+
+// Perjalanan Minna, dari awal sampai sekarang. Tambahkan `year` bila tahunnya sudah pasti.
+export const HISTORY = [
+  { title: 'Teman kuliah', detail: 'Bertemu di bangku kuliah dan sama-sama senang mengajar anak.' },
+  { title: 'Guru les bersama', detail: 'Mulai membuka les bersama untuk anak-anak di sekitar rumah.' },
+  { title: 'Guru SDIT Quwattul Ummah', detail: 'Mengajar di SDIT Quwattul Ummah dan membawa pengalaman kelas ke les sore.' },
+  { title: 'Minna Education', detail: 'Kini menjadi rumah belajar dan mengaji untuk anak PAUD sampai SMP di Wado Wetan.' }
+] as const
 
 export const TEACHING_SPECIALTIES = [
   {
@@ -146,5 +177,13 @@ export const FAQ_ITEMS = [
   {
     label: 'Boleh berkunjung dulu?',
     content: 'Boleh. Hubungi WhatsApp, lalu datang langsung ke lokasi.'
+  },
+  {
+    label: 'Siapa pengajarnya?',
+    content: 'Dipimpin Ibu Sudarmini, S.E., bersama Bu Ana, Bu Ratna, dan Bu Fara.'
+  },
+  {
+    label: 'Apakah ada laporan perkembangan anak?',
+    content: 'Ada. Orang tua bisa berkonsultasi langsung atau lewat WhatsApp.'
   }
 ]

@@ -55,12 +55,10 @@ function onLeave(el: Element, done: () => void) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Tanya jadwal dan biaya lewat WhatsApp"
-        class="fixed right-4 z-40 flex h-14 items-center gap-2.5 rounded-full bg-minna-green-700 pr-5 pl-4 text-sm font-bold text-surface shadow-[0_8px_20px_-6px_rgba(31,55,19,0.55)] ring-2 ring-surface transition-colors hover:bg-minna-green-800 sm:right-6 sm:h-16 sm:pr-6 sm:pl-5 sm:text-base"
-        style="bottom: max(1rem, env(safe-area-inset-bottom))"
+        class="wa-fab"
       >
-        <span class="fab-ring pointer-events-none absolute inset-0 rounded-full bg-minna-green-500" aria-hidden="true" />
-        <UIcon name="i-simple-icons-whatsapp" class="relative size-6 shrink-0 sm:size-7" aria-hidden="true" />
-        <span class="relative hidden min-[420px]:inline">Tanya via WhatsApp</span>
+        <UIcon name="i-simple-icons-whatsapp" class="wa-fab-icon" aria-hidden="true" />
+        <span class="wa-fab-label">Tanya via WhatsApp</span>
       </a>
     </Transition>
   </ClientOnly>

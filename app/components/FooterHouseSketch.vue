@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // The real learning house in Wado Wetan: timber gable, porch roof, green sign, picket fence,
 // shrubs, a banana tree. Ink line + flat colour, drawn on as the footer scrolls into view.
-const INK = '#2a1c15'
+const INK = '#263522'
 const PLANK = '#e8c9a0'
 const WOOD = '#b87a4b'
 const WOOD_DARK = '#7a4a2e'
@@ -61,12 +61,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="mt-12 border-t-2 border-line pt-8">
-    <p class="font-display text-lg font-bold text-ink">
+  <div class="house wrap">
+    <p class="house-caption">
       Rumah belajar kami di Wado Wetan
     </p>
 
-    <div class="mt-4 overflow-hidden rounded-3xl bg-canvas px-2 pt-4 sm:px-6 sm:pt-6">
+    <div class="house-frame">
       <svg
         ref="svgRef"
         viewBox="0 0 1200 268"

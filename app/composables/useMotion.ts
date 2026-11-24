@@ -37,9 +37,14 @@ export function useMotion() {
         rise('.quotes figure', 28)
         rise('.steps li', 24, 0.15)
         rise('.teacher-copy > *', 20, 0.1)
-        rise('.contact-panel > div:first-child > *', 20, 0.1)
+        rise('.teacher-card', 32, 0.1)
+        rise('.rail-track > li', 32, 0.1)
+        rise('.cta-copy > p, .cta-actions, .faq-contact, .faq-list details', 20, 0.08)
 
-        if (!full) return
+        if (!full) {
+          rise('.scene:not(.hero-art) [data-depth]', 0, 0)
+          return
+        }
 
         // Hero entrance: headline lines unmask, marker underline draws, art layers settle in.
         const h1 = root.querySelector<HTMLElement>('.hero h1')
@@ -48,7 +53,7 @@ export function useMotion() {
           SplitText.create(h1, {
             type: 'lines',
             mask: 'lines',
-            maskClass: 'split-mask',
+            linesClass: 'split-line',
             autoSplit: true,
             onSplit: (self) => {
               gsap.set(h1, { opacity: 1 })
@@ -72,7 +77,7 @@ export function useMotion() {
           SplitText.create(h, {
             type: 'lines',
             mask: 'lines',
-            maskClass: 'split-mask',
+            linesClass: 'split-line',
             autoSplit: true,
             onSplit: self => gsap.from(self.lines, {
               yPercent: 125,
@@ -81,6 +86,72 @@ export function useMotion() {
               stagger: 0.1,
               scrollTrigger: { trigger: h, start: 'top 88%', once: true }
             })
+          })
+        })
+
+        // Scene layer entrances on scroll: layers reveal one-by-one (staggered back to front) like hero.
+        $$('.scene:not(.hero-art)').forEach((scene) => {
+          const layers = scene.querySelectorAll<HTMLElement>('[data-depth]')
+          if (!layers.length) return
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: scene,
+              start: 'top 85%',
+              once: true
+            },
+            defaults: { ease: 'expo.out' }
+          })
+
+          layers.forEach((layer, idx) => {
+            const isBack = idx === 0
+            const isDetail = idx === layers.length - 1 && layers.length > 3
+            const isLeft = idx === 2 && layers.length === 4
+            const isRight = idx === 3 && layers.length === 4
+
+            let initXPercent = 0
+            let initYPercent = 12
+            let initScale = 0.94
+            let dur = 1.1
+
+            if (isBack) {
+              initScale = 0.92
+              initYPercent = 6
+              dur = 1.2
+            } else if (isDetail) {
+              initScale = 0.72
+              initYPercent = 8
+              dur = 1.0
+            } else if (isLeft) {
+              initXPercent = -8
+              initYPercent = 10
+              initScale = 0.95
+              dur = 1.05
+            } else if (isRight) {
+              initXPercent = 8
+              initYPercent = 10
+              initScale = 0.95
+              dur = 1.05
+            }
+
+            gsap.set(layer, {
+              opacity: 0,
+              scale: initScale,
+              yPercent: initYPercent,
+              xPercent: initXPercent
+            })
+
+            tl.to(
+              layer,
+              {
+                opacity: 1,
+                scale: 1,
+                yPercent: 0,
+                xPercent: 0,
+                duration: dur
+              },
+              idx * 0.18
+            )
           })
         })
 

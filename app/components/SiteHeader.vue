@@ -15,6 +15,8 @@ const whatsappLink = MINNA_CONTACT.whatsappUrl()
       <a href="/#program">Program</a>
       <a href="/#testimoni">Testimoni</a>
       <a href="/#cara-daftar">Cara Daftar</a>
+      <NuxtLink to="/tentang">Tentang</NuxtLink>
+      <NuxtLink to="/kabar">Kabar</NuxtLink>
       <NuxtLink to="/galeri">Galeri</NuxtLink>
     </nav>
 

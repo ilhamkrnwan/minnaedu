@@ -1,17 +1,15 @@
 <script setup lang="ts">
+import { SCENES } from '~/data/scenes'
 import { MINNA_CONTACT } from '~/data/minna'
 
-const whatsappPaud = computed(() =>
-  MINNA_CONTACT.whatsappUrl('Assalamualaikum, saya ingin bertanya tentang program PAUD / TK di Minna Education.')
-)
+const ask = (level: string) =>
+  MINNA_CONTACT.whatsappUrl(`Assalamualaikum, saya ingin bertanya tentang program ${level} di Minna Education.`)
 
-const whatsappSd = computed(() =>
-  MINNA_CONTACT.whatsappUrl('Assalamualaikum, saya ingin bertanya tentang program SD / MI di Minna Education.')
-)
-
-const whatsappSmp = computed(() =>
-  MINNA_CONTACT.whatsappUrl('Assalamualaikum, saya ingin bertanya tentang program SMP / MTs di Minna Education.')
-)
+const LEVELS = [
+  { id: 'program-paud', name: 'PAUD / TK', topics: ['Calistung', 'Mewarnai', 'Iqra'] },
+  { id: 'program-sd', name: 'SD / MI', topics: ['Matematika', 'IPA', 'Tahfidz'] },
+  { id: 'program-smp', name: 'SMP / MTs', topics: ['Latihan ujian', 'Tahsin', 'Fiqih'] }
+]
 </script>
 
 <template>
@@ -21,45 +19,21 @@ const whatsappSmp = computed(() =>
         <h2 id="judul-program">Belajar &amp; mengaji<br>dalam satu tempat.</h2>
       </div>
       <div class="program-art scene" data-parallax aria-hidden="true">
-        <img data-depth="64" src="/images/programs.webp" alt="" loading="lazy" decoding="async">
+        <img v-for="layer in SCENES.program" :key="layer.src" :data-depth="layer.depth" :src="layer.src" alt="" loading="lazy" decoding="async">
       </div>
     </div>
 
     <div class="program-grid">
-      <article id="program-paud" tabindex="-1">
-        <h3>PAUD / TK</h3>
-        <ul class="topics" aria-label="Topik PAUD dan TK">
-          <li>Calistung</li>
-          <li>Mewarnai</li>
-          <li>Iqra</li>
+      <article v-for="level in LEVELS" :id="level.id" :key="level.id" class="notch" tabindex="-1">
+        <h3>{{ level.name }}</h3>
+        <ul class="topics" :aria-label="`Topik ${level.name}`">
+          <li v-for="t in level.topics" :key="t">{{ t }}</li>
         </ul>
-        <a class="level-link" :href="whatsappPaud" target="_blank" rel="noopener noreferrer">
-          Tanya kelas PAUD/TK ↗
-        </a>
-      </article>
-
-      <article id="program-sd" tabindex="-1">
-        <h3>SD / MI</h3>
-        <ul class="topics" aria-label="Topik SD dan MI">
-          <li>Matematika</li>
-          <li>IPA</li>
-          <li>Tahfidz</li>
-        </ul>
-        <a class="level-link" :href="whatsappSd" target="_blank" rel="noopener noreferrer">
-          Tanya kelas SD/MI ↗
-        </a>
-      </article>
-
-      <article id="program-smp" tabindex="-1">
-        <h3>SMP / MTs</h3>
-        <ul class="topics" aria-label="Topik SMP dan MTs">
-          <li>Latihan ujian</li>
-          <li>Tahsin</li>
-          <li>Fiqih</li>
-        </ul>
-        <a class="level-link" :href="whatsappSmp" target="_blank" rel="noopener noreferrer">
-          Tanya kelas SMP/MTs ↗
-        </a>
+        <span class="socket socket-br">
+          <a class="orb" :href="ask(level.name)" target="_blank" rel="noopener noreferrer" :aria-label="`Tanya kelas ${level.name} lewat WhatsApp`">
+            <ArrowUpRight />
+          </a>
+        </span>
       </article>
     </div>
   </section>

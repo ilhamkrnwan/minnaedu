@@ -3,19 +3,22 @@ import { MINNA_CONTACT } from '~/data/minna'
 
 useSeoMeta({
   title: 'Kontak & Lokasi — Minna Education Kedungtuban, Blora',
-  description: 'Alamat, jadwal, WhatsApp, dan peta lokasi Minna Education di Wado Wetan, Kedungtuban, Blora.'
+  description: 'Alamat, jadwal, WhatsApp, dan peta lokasi Minna Education di Wado Wetan, Kedungtuban, Blora.',
+  ogTitle: 'Kontak & Lokasi — Minna Education Kedungtuban, Blora',
+  ogDescription: 'Alamat, jadwal, WhatsApp, dan peta lokasi Minna Education di Wado Wetan, Kedungtuban, Blora.'
 })
 
+const root = useReveal()
 const whatsappLink = MINNA_CONTACT.whatsappUrl()
 </script>
 
 <template>
-  <section class="kontak section wrap" aria-labelledby="judul-kontak-halaman">
+  <section ref="root" class="kontak section wrap" aria-labelledby="judul-kontak-halaman">
     <h1 id="judul-kontak-halaman">Kontak &amp; lokasi</h1>
 
     <div class="kontak-grid">
       <div>
-        <dl class="kontak-list">
+        <dl class="kontak-list" data-reveal>
           <div>
             <dt>Alamat</dt>
             <dd>
@@ -40,7 +43,7 @@ const whatsappLink = MINNA_CONTACT.whatsappUrl()
           </div>
         </dl>
 
-        <div class="kontak-actions">
+        <div class="kontak-actions" data-reveal>
           <a class="button button-primary" :href="whatsappLink" target="_blank" rel="noopener noreferrer">
             Chat WhatsApp <span aria-hidden="true">↗</span>
           </a>
@@ -52,6 +55,7 @@ const whatsappLink = MINNA_CONTACT.whatsappUrl()
 
       <iframe
         class="kontak-map"
+        data-reveal
         title="Peta lokasi Minna Education"
         :src="MINNA_CONTACT.mapsEmbedUrl"
         loading="lazy"

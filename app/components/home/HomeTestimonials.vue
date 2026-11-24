@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { SCENES } from '~/data/scenes'
 import { TESTIMONIALS } from '~/data/minna'
 </script>
 
@@ -10,7 +11,7 @@ import { TESTIMONIALS } from '~/data/minna'
           Cerita dari<br>keluarga Minna.
         </h2>
         <div class="parents-art scene" data-parallax aria-hidden="true">
-          <img data-depth="-84" src="/images/parents.webp" alt="" loading="lazy" decoding="async">
+          <img v-for="layer in SCENES.testimoni" :key="layer.src" :data-depth="layer.depth" :src="layer.src" alt="" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="quotes">

@@ -2,10 +2,18 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-11-21',
   devtools: { enabled: true },
-  modules: ['@nuxt/ui'],
+  modules: ['@nuxt/ui', '@nuxt/content'],
   css: ['~/assets/css/main.css'],
+  content: {
+    // Node >= 22.5 ships SQLite; no native better-sqlite3 build needed.
+    experimental: { sqliteConnector: 'native' }
+  },
   ui: {
     colorMode: false
+  },
+  runtimeConfig: {
+    // Set NUXT_PUBLIC_SITE_URL (e.g. https://domain-anda.id) in production for canonical, OG, and sitemap URLs.
+    public: { siteUrl: '' }
   },
   app: {
     head: {

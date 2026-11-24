@@ -11,7 +11,7 @@
     <span class="flex flex-col leading-none">
       <span class="font-display text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap">
         <span class="text-minna-rose-600">Minna</span>
-        <span class="text-minna-green-700"> Education</span>
+        <span class="text-leaf"> Education</span>
       </span>
       <span class="text-[11px] font-semibold text-ink-muted mt-0.5 whitespace-nowrap">
         Wado, Kedungtuban
