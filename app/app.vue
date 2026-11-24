@@ -11,7 +11,7 @@ useSeoMeta({
 
 useHead({
   meta: [
-    { name: 'theme-color', content: '#fbf5e8' },
+    { name: 'theme-color', content: '#fdfbf5' },
     { name: 'geo.placename', content: 'Kedungtuban, Blora, Jawa Tengah' }
   ]
 })

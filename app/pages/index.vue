@@ -1,11 +1,23 @@
+<script setup lang="ts">
+const root = ref<HTMLElement | null>(null)
+const { init, cleanup } = useMotion()
+
+onMounted(() => {
+  nextTick(() => root.value && init(root.value))
+})
+
+onUnmounted(cleanup)
+</script>
+
 <template>
-  <div>
+  <div id="beranda" ref="root">
     <HomeHero />
-    <HomeScrollMarquee />
-    <HomeManifesto />
-    <HomeLearningPlate />
-    <HomeOrbitalShowcase />
-    <HomeCampusAndTrust />
-    <HomeEnrollmentFaq />
+    <HomeSubjects />
+    <HomePrograms />
+    <HomeTeacher />
+    <HomeTestimonials />
+    <HomeEnrollment />
+    <HomeFaq />
+    <HomeContact />
   </div>
 </template>

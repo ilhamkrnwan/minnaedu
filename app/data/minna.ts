@@ -8,7 +8,9 @@ export const MINNA_CONTACT = {
   },
   instagramUrl: 'https://www.instagram.com/minnaedu/',
   facebookUrl: 'https://www.facebook.com/minnaedu',
-  mapsUrl: 'https://maps.app.goo.gl/2dsG33pXr3Hsmt5W7',
+  mapsUrl: 'https://share.google/7ABFgjsFLELTbo5lA',
+  // Place id (cid) of the Minna Education listing, from the existing maps.app.goo.gl link
+  mapsEmbedUrl: 'https://www.google.com/maps?cid=14803727037849999486&output=embed',
   address: 'Lr. Pandai Besi RT 03/RW 03, Wado Wetan, Kec. Kedungtuban, Blora 58381',
   scheduleSummary: 'Senin – Sabtu · 14.30 – 16.00 WIB'
 } as const
@@ -135,22 +137,14 @@ export const ENROLLMENT_STEPS = [
 export const FAQ_ITEMS = [
   {
     label: 'Program apa saja yang tersedia?',
-    content: 'Bimbel PAUD/TK, SD/MI, dan SMP/MTs mencakup Calistung, mata pelajaran sekolah (Matematika, IPA, Bahasa), latihan ujian, komputer dasar, serta mengaji Al-Qur’an, Tahfidz, dan akhlak.'
+    content: 'PAUD/TK, SD/MI, dan SMP/MTs: pelajaran sekolah, Calistung, mengaji, dan Tahfidz.'
   },
   {
     label: 'Kapan jadwal belajarnya?',
-    content: 'Senin – Sabtu pukul 14.30 – 16.00 WIB (90 menit/sesi), fleksibel menyesuaikan kegiatan sekolah atas kesepakatan.'
+    content: 'Senin – Sabtu, 14.30 – 16.00 WIB.'
   },
   {
-    label: 'Apakah orang tua boleh berkunjung dulu?',
-    content: 'Ya. Hubungi WhatsApp 0877-6484-8768 untuk info biaya dan jadwal, lalu silakan datang langsung ke Lr. Pandai Besi, Wado Wetan, Blora.'
-  },
-  {
-    label: 'Siapa pengajar di Minna Education?',
-    content: 'Dipimpin Ibu Sudarmini, S.E. bersama tim pendidik berlatar belakang perguruan tinggi dan pesantren.'
-  },
-  {
-    label: 'Apakah ada laporan perkembangan anak?',
-    content: 'Ya, tersedia konsultasi rutin dengan orang tua secara langsung maupun melalui WhatsApp.'
+    label: 'Boleh berkunjung dulu?',
+    content: 'Boleh. Hubungi WhatsApp, lalu datang langsung ke lokasi.'
   }
 ]

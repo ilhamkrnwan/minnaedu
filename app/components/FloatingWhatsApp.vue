@@ -18,7 +18,7 @@ onMounted(() => {
     { threshold: 0.35 }
   )
   const watch = () => {
-    const closing = document.getElementById('cta-penutup')
+    const closing = document.getElementById('kontak')
     if (closing) observer?.observe(closing)
   }
   watch()

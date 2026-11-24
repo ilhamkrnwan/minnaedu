@@ -12,13 +12,20 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'id'
       },
+      script: [
+        {
+          // Hide hero pre-hydration only when motion is allowed; fail-safe removes it after 3s.
+          innerHTML: "if(matchMedia('(prefers-reduced-motion: no-preference)').matches){var e=document.documentElement;e.classList.add('motion');setTimeout(function(){e.classList.remove('motion')},3000)}",
+          tagPosition: 'head'
+        }
+      ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/png', href: '/minnaedu.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,600&family=Caveat+Brush&display=swap'
+          href: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap'
         }
       ]
     }
